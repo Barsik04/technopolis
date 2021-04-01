@@ -1,5 +1,6 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 public class FriendsPage {
     WebDriver driver;
@@ -13,7 +14,9 @@ public class FriendsPage {
 
 
     public void searchName(String name){
-        driver.findElement(By.xpath(NAMES_LOCATOR)).click().sendKeys("ASD");
+        WebElement element = driver.findElement(By.xpath(NAMES_LOCATOR));
+        element.click();
+        element.sendKeys("ASd");
 
 
     }
