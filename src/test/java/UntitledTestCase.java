@@ -7,13 +7,13 @@ public class UntitledTestCase extends BaseTest{
     private StringBuffer verificationErrors = new StringBuffer();
 
     String username="Test";
-    String passswrd ="Test";
+    String password ="Test";
 
 
 
     @Test
     public void testUntitledTestCase() throws Exception {
-        UserPage userpage = new LoginPage(driver).doLogin(username, passswrd);
+        UserPage userpage = new LoginPage(driver).doLogin(username, password);
 
 
 
