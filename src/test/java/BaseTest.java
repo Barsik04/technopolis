@@ -8,10 +8,10 @@ public class BaseTest {
 
     @Before
     public void setUp() throws Exception {
-//        System.setProperty("webdriver.chrome.driver", "C://chromedriver/chromedriver/chromedriver.exe");
-//        driver = new ChromeDriver();
-//        driver.manage().window();
-//        driver.get("https://ok.ru");
+        System.setProperty("webdriver.chrome.driver", "C://chormeDriver/chromedriver.exe");
+        driver = new ChromeDriver();
+        driver.manage().window();
+        driver.get("https://ok.ru");
 
 
     }
