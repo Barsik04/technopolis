@@ -8,6 +8,7 @@ public class BaseTest {
 
     @Before
     public void setUp() throws Exception {
+        //версия никиты
         //System.setProperty("webdriver.chrome.driver", "C://chormeDriver/chromedriver.exe");
         driver = new ChromeDriver();
         driver.manage().window();
