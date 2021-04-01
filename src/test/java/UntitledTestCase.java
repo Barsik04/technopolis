@@ -6,8 +6,8 @@ public class UntitledTestCase extends BaseTest{
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
 
-    String username="Test";
-    String password ="Test";
+    String username="79991095900";
+    String password ="Region56";
 
 
 
