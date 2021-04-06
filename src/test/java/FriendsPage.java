@@ -13,10 +13,13 @@ public class FriendsPage {
     }
 
 
-    public void searchName(String name){
+    public void searchName(String name) throws InterruptedException{
         WebElement element = driver.findElement(By.xpath(NAMES_LOCATOR));
-        element.click();
-        element.sendKeys("ASd");
+        System.out.println("ITS OK");
+        driver.wait(10000);
+        //element.click();
+        System.out.println("x2");
+        element.sendKeys(name);
 
 
     }
