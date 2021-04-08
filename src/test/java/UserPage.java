@@ -9,5 +9,9 @@ public class UserPage {
 
     }
 
+    public static void setLike(){
+
+    }
+
     //do smthng(select post + like)
 }
