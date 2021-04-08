@@ -1,4 +1,5 @@
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -12,12 +13,14 @@ public class FriendsPage {
     }
 
 
-    public void searchName(String name) {
+    public void searchName(String name) throws InterruptedException {
+        Thread.sleep(3000);
+//        driver.wait(3000);
         WebElement element = driver.findElement(By.xpath(NAMES_SEARCH_LOCATOR));
         System.out.println("ITS OK");
-
+        element.click();
         element.sendKeys(name);
-        element.sendKeys("{ENTER}");
+        element.sendKeys(Keys.ENTER);
 
         System.out.println("x2");
 
