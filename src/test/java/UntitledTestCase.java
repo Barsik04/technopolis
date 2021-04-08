@@ -17,7 +17,7 @@ public class UntitledTestCase extends BaseTest{
         MyPage userPage = loginPage.doLogin(username, password);
 
         FriendsPage fp = userPage.goToSearchFriends();
-       fp.searchName("ASD");
+       fp.searchName("Патриарх Кирилл");
        UserPage up = fp.selectFriend(4);
        //up do smng;
        System.in.read();

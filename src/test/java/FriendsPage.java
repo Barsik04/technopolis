@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 public class FriendsPage {
     WebDriver driver;
     String NAMES_SEARCH_LOCATOR1=".//input[contains(@type, 'text')  and contains(@placeholder, 'Поиск')]";
-    String NAMES_SEARCH_LOCATOR=".//div[contains(@class,'friend')]//input";
+    String NAMES_SEARCH_LOCATOR=".//input[contains(@type,'text') and contains(@placeholder,'Введите имя или название') ]";
     FriendsPage(WebDriver driver){
         this.driver = driver;
 
