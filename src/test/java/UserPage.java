@@ -3,7 +3,8 @@ import org.openqa.selenium.WebDriver;
 
 public class UserPage {
     WebDriver driver;
-    String FRIENDS_LOCATOR=".//*[contains(@class, 'navigation')]/div/a/div[contains(., 'Друзья')]";
+//    String FRIENDS_LOCATOR=".//*[contains(@class, 'navigation')]/div/a/div[contains(., 'Друзья')]";
+    String FRIENDS_LOCATOR=".//*[contains(@class, 'navigation')]/div/a[contains(@data-l,'t,userFriend')]";
 
     UserPage(WebDriver driver){
         this.driver = driver;

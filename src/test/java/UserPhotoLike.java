@@ -11,7 +11,7 @@ public class UserPhotoLike {
 
     public void doLike(){
         driver.findElement(By.xpath(PHOTO_LOCATOR)).click();
-        
+
     }
 
 }
