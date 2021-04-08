@@ -1,15 +1,15 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class UserPage {
+public class MyPage {
     WebDriver driver;
     String FRIENDS_LOCATOR=".//*[contains(@class, 'navigation')]/div/a/div[contains(., 'Друзья')]";
 
-    UserPage(WebDriver driver){
+    MyPage(WebDriver driver){
         this.driver = driver;
 
     }
-    public FriendsPage doSearch(){
+    public FriendsPage goToSearchFriends(){
 
         driver.findElement(By.xpath(FRIENDS_LOCATOR)).click();
 

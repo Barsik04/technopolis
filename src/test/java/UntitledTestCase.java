@@ -6,18 +6,20 @@ public class UntitledTestCase extends BaseTest{
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
 
-    String username="79991095900";
-    String password ="region56";
+    String username="";
+    String password ="";
 
 
 
     @Test
     public void testUntitledTestCase() throws Exception {
         LoginPage loginPage = new LoginPage(driver);
-        UserPage userPage = loginPage.doLogin(username, password);
-        driver.wait(10000);
-        FriendsPage fp = userPage.doSearch();
+        MyPage userPage = loginPage.doLogin(username, password);
+
+        FriendsPage fp = userPage.goToSearchFriends();
        fp.searchName("ASD");
+       UserPage up = fp.selectFriend(4);
+       //up do smng;
        System.in.read();
 
 
