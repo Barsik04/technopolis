@@ -5,7 +5,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class BaseTest {
      WebDriver driver;
-
+    private String baseUrl;
     @Before
     public void setUp() throws Exception {
         //System.setProperty("webdriver.chrome.driver", "C://chormeDriver/chromedriver.exe");
