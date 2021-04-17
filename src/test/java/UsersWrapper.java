@@ -3,43 +3,47 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class UsersWrapper {
     private WebElement element;
     private WebDriver driver;
 
-    public String USER_NAME_LOCATOR= ".//a[contains(@href,'/profile/' )]/div[contains(@class,'sm_')]";
+    public String USER_NAME_LOCATOR = ".//a[contains(@href,'/profile/' )]/div[contains(@class,'sm_')]";
 
-    public UsersWrapper(WebElement element, WebDriver driver){
-        this.driver=driver;
-        this.element=element;
+    public UsersWrapper(WebElement element, WebDriver driver) {
+        this.driver = driver;
+        this.element = element;
     }
 
-    public boolean hasXpath(String xPath){
-        try{
-            driver.findElement(By.xpath(xPath));
-            return true;
-        }
-        catch (Exception e){
-            System.err.println("Нет элементов");
-            return false;
-        }
+    public UsersWrapper(WebDriver driver) {
+        this.driver = driver;
     }
 
-    public List<UsersWrapper> users(){
-        if(hasXpath(USER_NAME_LOCATOR)){
-            ArrayList<UsersWrapper> list=new ArrayList<UsersWrapper>();
-            for (WebElement user:driver.findElements(By.xpath(USER_NAME_LOCATOR))) {
-                list.add(new UsersWrapper(user,driver));
+
+    public boolean hasXpath(String xPath) {
+        return driver.findElement(By.xpath(xPath)).isDisplayed();
+    }
+
+    public List<UsersWrapper> getUsers() {
+        List<UsersWrapper> list = new ArrayList<UsersWrapper>();
+        if (hasXpath(USER_NAME_LOCATOR)) {
+            for (WebElement user : driver.findElements(By.xpath(USER_NAME_LOCATOR))) {
+                list.add(new UsersWrapper(user, driver));
 
             }
-            System.out.println(list.size());
+
             return list;
 
         }
+        return Collections.emptyList();
 
+    }
 
+    public void click() {
+        this.element.click();
     }
 
 

@@ -9,11 +9,5 @@ public class UserPage {
         this.driver = driver;
 
     }
-    public FriendsPage doSearch(){
 
-        driver.findElement(By.xpath(FRIENDS_LOCATOR)).click();
-
-    return new FriendsPage(driver);
-
-    }
 }
