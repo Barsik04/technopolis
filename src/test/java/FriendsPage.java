@@ -20,27 +20,26 @@ public class FriendsPage {
     }
 
 
-    public void searchName(String name) throws InterruptedException {
-        Thread.sleep(3000);
-//        driver.wait(3000);
-        WebElement element = driver.findElement(By.xpath(NAMES_SEARCH_LOCATOR));
 
-        element.click();
+
+
+    public UserPage selectFriend(int n,String name) throws InterruptedException {
+        Thread.sleep(3000);//ожидание прогрузки
+//        driver.wait(3000);
+        WebElement element = driver.findElement(By.xpath(NAMES_SEARCH_LOCATOR));//Поиск строки ввода
+
+        element.click();//клик и ввод туда фамилии и иммени
         element.sendKeys(name);
         driver.findElement(By.xpath(SEARCH_FRIEND_BUTTON)).click();
         //element.sendKeys(Keys.ENTER);
 
-        Thread.sleep(3000);
-        List<UsersWrapper> friendsList = new UsersWrapper(this.driver).getUsers();
+        Thread.sleep(3000);//Ожидание прогрузки
+        List<UsersWrapper> friendsList = new UsersWrapper(this.driver).getUsers();//Поиск и оборачивание всех элементов для дальнейшей работы с ними
 
 
-        selectFriend(4, friendsList);
-
-    }
 
 
-    public UserPage selectFriend(int n, List<UsersWrapper> list) {
-        list.get(n).click();
+        friendsList.get(n).click();
         return new UserPage(driver);
     }
 }
