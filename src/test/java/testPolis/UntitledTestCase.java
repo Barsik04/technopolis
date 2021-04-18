@@ -1,28 +1,25 @@
-package testPolis;
 
 import org.junit.*;
-import org.openqa.selenium.WebDriver;
-
-import java.util.ArrayList;
 
 public class UntitledTestCase extends BaseTest {
-    WebDriver driver;
+
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
 
-    String username = "79991095900";
-    String password = "Region56";
+    String username = "";
+    String password = "";
 
 
     @Test
     public void testUntitledTestCase() throws Exception {
-        LoginPage loginPage = new LoginPage(driver);
-        MyPage myPage = loginPage.doLogin(username, password);
+        LoginPage loginPage = new LoginPage(driver);//заход на главную страницу
+        MyPage myPage = loginPage.doLogin(username, password);//Работа с главной страницей и логин
 
-        FriendsPage fp = myPage.goToSearchFriends();
-        fp.searchName("Патриарх Кирилл");
-        UsersWrapper user=new UsersWrapper(driver);
-        ArrayList<UsersWrapper> usersCards=getUsers();
+        FriendsPage fp = myPage.goToSearchFriends();//Переход на страницу поиска друзей
+        UserPage up = fp.selectFriend(1, "Патриарх Кирилл");//Получение страницы, с номером относительно верхнего
+
+
+        //up.setLike() тебе надо написать
 
         System.in.read();
 
