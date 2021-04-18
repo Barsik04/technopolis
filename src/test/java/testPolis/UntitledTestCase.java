@@ -1,13 +1,17 @@
+package testPolis;
 
 import org.junit.*;
+import org.openqa.selenium.WebDriver;
+
+import java.util.ArrayList;
 
 public class UntitledTestCase extends BaseTest {
-
+    WebDriver driver;
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
 
-    String username = "";
-    String password = "";
+    String username = "79991095900";
+    String password = "Region56";
 
 
     @Test
@@ -17,7 +21,8 @@ public class UntitledTestCase extends BaseTest {
 
         FriendsPage fp = myPage.goToSearchFriends();
         fp.searchName("Патриарх Кирилл");
-
+        UsersWrapper user=new UsersWrapper(driver);
+        ArrayList<UsersWrapper> usersCards=getUsers();
 
         System.in.read();
 

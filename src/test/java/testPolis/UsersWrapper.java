@@ -1,9 +1,10 @@
+package testPolis;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class UsersWrapper {
     public boolean hasXpath(String xPath) {
         return driver.findElement(By.xpath(xPath)).isDisplayed();
     }
-
+    //обертка
     public List<UsersWrapper> getUsers() {
         List<UsersWrapper> list = new ArrayList<UsersWrapper>();
         if (hasXpath(USER_NAME_LOCATOR)) {

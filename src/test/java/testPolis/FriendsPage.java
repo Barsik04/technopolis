@@ -1,10 +1,9 @@
+package testPolis;
+
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import javax.xml.bind.Element;
-import java.util.ArrayList;
 import java.util.List;
 
 public class FriendsPage {
