@@ -32,14 +32,14 @@ public class UsersWrapper {
             ArrayList<UsersWrapper> list=new ArrayList<UsersWrapper>();
             for (WebElement user:driver.findElements(By.xpath(USER_NAME_LOCATOR))) {
                 list.add(new UsersWrapper(user,driver));
-
+                
             }
             System.out.println(list.size());
             return list;
 
         }
 
-
+        return list;
     }
 
 
