@@ -5,6 +5,7 @@ import org.openqa.selenium.interactions.Actions;
 
 import javax.swing.*;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class UserPage {
     WebDriver driver;
@@ -22,7 +23,8 @@ public class UserPage {
         Actions action=new Actions(driver);
         List<PhotosWrapper> pw=new PhotosWrapper(this.driver).getPhotos();
         pw.get(0).click();
-        Thread.sleep(3000);
+//        Thread.sleep(3000);
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         //если лайка нет, то кликаем по нему
         if(!driver.findElement(By.xpath(LIKE_IS_ACTIVE)).isDisplayed()) {
             driver.findElement(By.xpath(LIKE)).click();
@@ -33,9 +35,11 @@ public class UserPage {
     }
 
     public void goToFriendPhoto() throws InterruptedException{
-        Thread.sleep(3000);
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+
         driver.findElement(By.xpath(PHOTO_NAV)).click();
-        Thread.sleep(3000);
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+
     }
 
 }

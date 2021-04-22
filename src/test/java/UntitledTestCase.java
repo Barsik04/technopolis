@@ -25,12 +25,6 @@ public class UntitledTestCase extends BaseTest {
         up.goToFriendPhoto();
         up.setLike(1);
 
-
-        //up.setLike() тебе надо написать
-
-//        System.in.read();
-
-
     }
 
 
