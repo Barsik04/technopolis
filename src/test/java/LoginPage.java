@@ -3,9 +3,9 @@ import org.openqa.selenium.WebDriver;
 
 public class LoginPage {
     WebDriver driver;
-    String LOGIN_LOCATOR = ".//*[contains(@class, 'form')]/div/input[@type='text']";
-    String PASSWORD_LOCATOR = ".//*[contains(@class, 'form')]/div/input[@type='password']";
-    String SUBMIT_LOCATOR = ".//*[contains(@class, 'form')]/div/input[contains(@value, 'Войти') or contains(@value, 'войти')]";
+    static final String LOGIN_LOCATOR = ".//*[contains(@class, 'form')]/div/input[@type='text']";
+    static final String PASSWORD_LOCATOR = ".//*[contains(@class, 'form')]/div/input[@type='password']";
+    static final String SUBMIT_LOCATOR = ".//*[contains(@class, 'form')]/div/input[contains(@value, 'Войти') or contains(@value, 'войти')]";
 
 
     LoginPage(WebDriver driver) {

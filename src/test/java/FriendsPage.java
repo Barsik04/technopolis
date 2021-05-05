@@ -6,14 +6,13 @@ import java.util.List;
 
 public class FriendsPage {
     WebDriver driver;
-    //    String NAMES_SEARCH_LOCATOR1=".//input[contains(@type, 'text')  and contains(@placeholder, 'Поиск')]";
-    String NAMES_SEARCH_LOCATOR = ".//input[contains(@type,'text') and contains(@placeholder,'Введите имя или название') ]";
-    String USER_NAME_LOCATOR = ".//a[contains(@href,'/profile/' )]/div[contains(@class,'sm_')]";
-    String SEARCH_FRIEND_BUTTON = ".//button/span[contains(.,'Найти')]";
+    static final String NAMES_SEARCH_LOCATOR = ".//input[contains(@type,'text') and contains(@placeholder,'Введите имя или название') ]";
+//    static final String USER_NAME_LOCATOR = ".//a[contains(@href,'/profile/' )]/div[contains(@class,'sm_')]";
+    static final String SEARCH_FRIEND_BUTTON = ".//button/span[contains(.,'Найти')]";
+    static final String USER_NAME_LOCATOR = ".//a[contains(@href,'' )]/div[contains(@class,'sm_')]";
 
     FriendsPage(WebDriver driver) {
         this.driver = driver;
-
     }
 
 
@@ -31,7 +30,7 @@ public class FriendsPage {
         //element.sendKeys(Keys.ENTER);
 
         Thread.sleep(3000);//Ожидание прогрузки
-        List<UsersWrapper> friendsList = new UsersWrapper(this.driver).getUsers();//Поиск и оборачивание всех элементов для дальнейшей работы с ними
+        List<WrapperHelper> friendsList = new WrapperHelper(this.driver,USER_NAME_LOCATOR).getElements();//Поиск и оборачивание всех элементов для дальнейшей работы с ними
 
 
 

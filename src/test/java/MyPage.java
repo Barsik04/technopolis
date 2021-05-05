@@ -5,7 +5,7 @@ import java.util.concurrent.TimeUnit;
 
 public class MyPage {
     WebDriver driver;
-    String FRIENDS_LOCATOR=".//div[contains(@class, 'portlet')]//div[text()= 'Найти друзей']";
+    static final String FRIENDS_LOCATOR=".//div[contains(@class, 'portlet')]//div[text()= 'Найти друзей']";
 
     MyPage(WebDriver driver){
         this.driver = driver;

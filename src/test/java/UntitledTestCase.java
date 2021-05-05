@@ -2,16 +2,12 @@
 //Главный класс.
 //Кейс состоит в том, чтобы найти конкретного польователя, зайти на его страницу,
 // найти конкретное по номеру фото и лайкнуть его, если оно не лайкнуто
-import org.junit.*;
-import org.openqa.selenium.By;
+import org.junit.Test;
 
 public class UntitledTestCase extends BaseTest {
 
-    private boolean acceptNextAlert = true;
-    private StringBuffer verificationErrors = new StringBuffer();
-
-    String username = "";
-    String password = "";
+    static final String username = "79991095900";
+    static final String password = "Region56";
 
 
     @Test
