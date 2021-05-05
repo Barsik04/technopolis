@@ -1,6 +1,8 @@
+package pages;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
+import wrapper.WrapperHelper;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -20,7 +22,7 @@ public class UserPage {
         this.driver = driver;
     }
 
-    public void setLike(int n) throws InterruptedException{
+    public void setLike(int n) {
         List<WrapperHelper> pw=new WrapperHelper(this.driver,USER_PHOTO_LOCATOR).getElements();
         pw.get(0).click();
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
@@ -33,8 +35,7 @@ public class UserPage {
 
     }
 
-    public void goToFriendPhoto() throws InterruptedException{
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+    public void goToFriendPhoto() {
         driver.findElement(By.xpath(PHOTO_NAV)).click();
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
     }

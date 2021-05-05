@@ -1,3 +1,5 @@
+package wrapper;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -33,7 +35,7 @@ public class WrapperHelper {
     }
 
     public List<WrapperHelper> getElements() {
-        List<WrapperHelper> list = new ArrayList<WrapperHelper>();
+        List<WrapperHelper> list = new ArrayList<>();
         if (hasXpath(LOCATOR)) {
             for (WebElement elem : driver.findElements(By.xpath(LOCATOR))) {
                 list.add(new WrapperHelper(elem, driver));
