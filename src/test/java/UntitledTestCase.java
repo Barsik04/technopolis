@@ -6,8 +6,8 @@ import org.junit.Test;
 
 public class UntitledTestCase extends BaseTest {
 
-    static final String username = "79991095900";
-    static final String password = "Region56";
+    static final String username = "";
+    static final String password = "";
 
 
     @Test
