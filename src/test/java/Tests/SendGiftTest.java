@@ -10,8 +10,8 @@ import org.junit.Test;
 
 public class SendGiftTest extends BaseTest {
 
-    static final String username = "89270054472";
-    static final String password = "4815162342Nikita";
+    static final String username = "";
+    static final String password = "";
     public String name = "Vitaly Timakov";
 
     @Test
@@ -23,10 +23,7 @@ public class SendGiftTest extends BaseTest {
         FriendsPage fp = myPage.goToSearchFriends();//Переход на страницу поиска друзей
         UserPage up = fp.selectFriend(0,name);//Получение страницы, с номером относительно верхнего
         up.sendGift(name);
-        //Assert.assertTrue("Подарок не пришел",up.isChange());
 
-        // up.goToFriendPhoto();
-        //up.setLike(1);
 
     }
 

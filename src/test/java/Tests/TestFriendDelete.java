@@ -12,7 +12,7 @@ import org.openqa.selenium.By;
 import java.util.concurrent.TimeUnit;
 
 
-public class TestFriendAdd extends BaseTest {
+public class TestFriendDelete extends BaseTest {
 
 
 
@@ -27,7 +27,9 @@ public class TestFriendAdd extends BaseTest {
 
         LoginPage loginPage = new LoginPage(driver);
         MyPage myPage = loginPage.doLogin();
-        //myPage.checkDeleteFriend();
+        FriendsPage fp = myPage.goToSearchFriends();//Переход на страницу поиска друзей
+        UserPage up = fp.selectFriend(0,name);
+        up.checkDeleteFriend();
 
     }
 

@@ -1,6 +1,7 @@
 package Others;
 
 import Tests.SendGiftTest;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -27,15 +28,16 @@ public class UserPage {
     static final String SEND = "//button[contains(@class,'send')]";
     static final String GIFTS_COUNTER = "//a[@class='gift_a']";
     static final String GO_TO_GIFTS = "//a[contains(@class, 'mctc_navMenuDDLIL') and contains(text(),'Подарки')]";
+    private String DELETE = "//*[contains(text(), 'Удалить из друзей')]";
 
+    private String CHOOSE_FRIEND = "(.//a[@class='user-grid-card_img'])[1]";
 
-    private String CHOOSE_FRIEND = "//div[@class='user-grid-card'][1]";
-    private String DELETE ="//*[contains(text(), 'Удалить из друзей')]";
     private String MAIN = "//div[@id='topPanelLeftCorner']";
     private String TRID = "//span[contains(@class,'u-menu_a toggle-dropdown')]/*[contains(@class,'svg-ic svg-ico_more_16')]";
     private String FRIEND = "//a[@data-l = 't,userFriend']";
     private String FRIEND_LIST = "//div[@class='user-grid-card']";
     static final String ESE = "//span[@id='mctc_navMenuDropdownSec_otherSections']/span";
+    private String CONFIRM = "//input[contains(@data-l, 'confirm')]";
 
     private int start = -1;
     private int end = -1;
@@ -70,9 +72,11 @@ public class UserPage {
         this.name = name;
         start = checkGifts();
         System.out.println("было " + start);
-        driver.manage().timeouts().implicitlyWait(3000, TimeUnit.MILLISECONDS);
-        driver.findElement(By.xpath(SEND_GIFT)).click();
 
+        WebElement send = (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(SEND_GIFT)));
+
+        send.click();
 
         WebElement selectGifr = (new WebDriverWait(driver, 10))
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath(CHOOSE_GIFT)));
@@ -80,15 +84,14 @@ public class UserPage {
         selectGifr.click();
 
 
+      driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@class='modal-new_payment-frame']")));
 
-        //  driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@class='modal-new_payment-frame']")));
+       // System.out.println("переключились на другой фрейм");
 
-        //   System.out.println("переключились на другой фрейм");
-
-        // driver.findElement(By.xpath(SEND)).click();
+       // driver.findElement(By.xpath(SEND)).click();
 
 
-        //   driver.switchTo().defaultContent();
+       // driver.switchTo().defaultContent();
 
 
         //  end = checkGifts();
@@ -111,24 +114,41 @@ public class UserPage {
         return n;
     }
 
-    public void checkDeleteFriend(){
+    public void checkDeleteFriend() {
 
         start = checkFriendCount();
-        System.out.println("Имеем " + start);
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        System.out.println("Имеем друзей " + start);
 
-        driver.findElement(By.xpath(CHOOSE_FRIEND)).click();
 
-        driver.findElement(By.xpath(TRID)).click();
+        WebElement chooseFriend = (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(CHOOSE_FRIEND)));
 
-        driver.findElement(By.xpath(DELETE)).click();
+        chooseFriend.click();
+
+        WebElement triT = (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(TRID)));
+
+        triT.click();
+        driver.manage().timeouts().implicitlyWait(8000, TimeUnit.SECONDS);
+       // ConfirmPage cf = conf();
+
 
         end = checkFriendCount();
+        System.out.println("Имеем по итогу " + end);
+    }
+
+    public void res() {
+        Assert.assertTrue("Все прошло успешно", end < start);
+    }
+
+    public ConfirmPage conf() {
+
+        driver.findElement(By.xpath(DELETE)).click();
+        return new ConfirmPage(driver);
     }
 
 
-
-    public int checkFriendCount(){
+    public int checkFriendCount() {
         driver.findElement(By.xpath(MAIN)).click();
         driver.findElement(By.xpath(FRIEND)).click();
         driver.manage().timeouts().implicitlyWait(800, TimeUnit.MILLISECONDS);
