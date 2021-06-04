@@ -84,18 +84,19 @@ public class UserPage {
         selectGifr.click();
 
 
-      driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@class='modal-new_payment-frame']")));
+        driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@class='modal-new_payment-frame']")));
 
-       // System.out.println("переключились на другой фрейм");
+        System.out.println("переключились на другой фрейм");
 
-       // driver.findElement(By.xpath(SEND)).click();
-
-
-       // driver.switchTo().defaultContent();
+        driver.findElement(By.xpath(SEND)).click();
 
 
-        //  end = checkGifts();
-        //  System.out.println("стало " + end);
+        driver.switchTo().defaultContent();
+
+
+        end = checkGifts();
+        System.out.println("стало " + end);
+        Assert.assertTrue("Подарок не пришел!", isChange());
 
     }
 
@@ -130,11 +131,12 @@ public class UserPage {
 
         triT.click();
         driver.manage().timeouts().implicitlyWait(8000, TimeUnit.SECONDS);
-       // ConfirmPage cf = conf();
+        ConfirmPage cf = conf();
 
 
         end = checkFriendCount();
         System.out.println("Имеем по итогу " + end);
+        res();
     }
 
     public void res() {

@@ -14,7 +14,7 @@ public abstract class BaseTest {
     @BeforeClass
     public static void setUp() throws Exception {
         driver = new ChromeDriver();
-        //System.setProperty("webdriver.chrome.driver", "C://chormeDriver/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C://chormeDriver/chromedriver.exe");
 
         driver.manage().window().maximize();
         driver.get("https://ok.ru");

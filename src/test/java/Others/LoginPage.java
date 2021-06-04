@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 public class LoginPage {
     WebDriver driver;
     static private final String username = "";
-    static private final String password = "";
+    static private final String password = "!";
 
     static final String LOGIN_LOCATOR = ".//*[contains(@class, 'form')]/div/input[@type='text']";
     static final String PASSWORD_LOCATOR = ".//*[contains(@class, 'form')]/div/input[@type='password']";
