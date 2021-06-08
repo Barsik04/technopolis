@@ -17,13 +17,19 @@ public class SendGiftTest extends BaseTest {
     @Test
     public void testUntitledTestCase() throws Exception {
 
+        int start = -1;
+        int end = -1;
+
+
         LoginPage loginPage = new LoginPage(driver);
         MyPage myPage = loginPage.doLogin();
 
-        UserPage fp = myPage.goToSearchFriends(0,name);//Переход на страницу поиска друзей
+        myPage.goToFriendList();
+        FriendListPage friendList = new FriendListPage(driver);
 
-       // UserPage up = fp.selectFriend(0,name);//Получение страницы, с номером относительно верхнего
-        //up.sendGift(name);
+
+
+        UserPage up = myPage.goToSearchFriends(0, "Vitaly Timakov");
 
 
     }
