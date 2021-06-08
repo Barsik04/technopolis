@@ -32,7 +32,7 @@ public class WrapperHelper {
     }
 
     private boolean hasXpath(String xPath) {
-        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         return driver.findElement(By.xpath(xPath)).isDisplayed();
     }
 

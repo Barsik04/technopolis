@@ -24,7 +24,7 @@ public class UserPage {
     static final String USER_PHOTO_LOCATOR = ".//div[contains(@class,'ugrid_cnt')]/li[contains(@class,'ugrid_i')]//a[contains(@class,'photo-card_cnt')]";
     //
     static final String SEND_GIFT = "(//a[contains(text(),'Сделать подарок')])[1]";
-    static final String CHOOSE_GIFT = "(.//a[@class='gift_a'])[1]";
+    static final String CHOOSE_GIFT = "(//img[@class=\"gift\"])[1]";
     static final String CHECK_PRIVATE = "//label[contains(@class,'checkbox') and contains(@for,'private')]";
     static final String SEND = "//button[contains(@class,'send')]";
     static final String GIFTS_COUNTER = "//a[@class='gift_a']";
@@ -41,13 +41,18 @@ public class UserPage {
     private String CONFIRM = "//input[contains(@data-l, 'confirm')]";
 
 
+    String SG = "(//*[@class=\"gift_a\"])[3]";
+    String BACK = "//div[@class=\"compact-profile_img\"]";
 
+    private String SGIFT = "//*[@class=\"gift-card __s __stub\"]";
+
+    String GTV = "//div/a[@class=\"o\"]";
 
     private int start = -1;
     private int end = -1;
 
 
-    private String name;
+    private String name = "Vitaly Timakov";
 
     public UserPage(WebDriver driver) {
         this.driver = driver;
@@ -72,36 +77,50 @@ public class UserPage {
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
     }
 
-    public void sendGift(String name) {
-        driver.switchTo().defaultContent();
-        this.name = name;
-        start = checkGifts();
-        System.out.println("было " + start);
+    public void sendGift() {
 
+
+        driver.manage().timeouts().implicitlyWait(800, TimeUnit.MILLISECONDS);
+        WebElement ese = (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(ESE)));
+        ese.click();
+
+
+
+        WebElement goToGifts = (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(GO_TO_GIFTS)));
+        goToGifts.click();
+
+
+        driver.manage().timeouts().implicitlyWait(800, TimeUnit.MILLISECONDS);
         WebElement send = (new WebDriverWait(driver, 10))
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(SEND_GIFT)));
-
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(SGIFT)));
         send.click();
-
-        WebElement selectGifr = (new WebDriverWait(driver, 10))
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(CHOOSE_GIFT)));
-
-        selectGifr.click();
+        driver.manage().timeouts().implicitlyWait(800, TimeUnit.MILLISECONDS);
 
 
-        driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@class='modal-new_payment-frame']")));
 
-        System.out.println("переключились на другой фрейм");
-
-        driver.findElement(By.xpath(SEND)).click();
-
-
-        driver.switchTo().defaultContent();
+        WebElement sg = (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(SG)));
+        sg.click();
 
 
-        end = checkGifts();
-        System.out.println("стало " + end);
-        Assert.assertTrue("Подарок не пришел!", isChange());
+
+        WebElement toBack = (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(GTV)));
+        toBack.click();
+
+
+
+        //driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@class='modal-new_payment-frame']")));
+
+        // System.out.println("переключились на другой фрейм");
+
+        // driver.findElement(By.xpath(SEND)).click();
+//
+
+        // driver.switchTo().defaultContent();
+
 
     }
 
@@ -115,7 +134,11 @@ public class UserPage {
         driver.findElement(By.xpath(GO_TO_GIFTS)).click();
         driver.manage().timeouts().implicitlyWait(800, TimeUnit.MILLISECONDS);
         int n = driver.findElements(By.xpath(GIFTS_COUNTER)).size();
-        driver.findElement(By.xpath("//*[text()='" + this.name + "']")).click();
+
+
+        WebElement back = (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(BACK)));
+        back.click();
 
         return n;
     }
@@ -143,7 +166,6 @@ public class UserPage {
         driver.manage().timeouts().implicitlyWait(8000, TimeUnit.SECONDS);
         ConfirmPage cf = new ConfirmPage(driver);
         cf.confirm();
-
 
 
     }

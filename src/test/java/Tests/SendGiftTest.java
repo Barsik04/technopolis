@@ -28,13 +28,22 @@ public class SendGiftTest extends BaseTest {
         FriendListPage friendList = new FriendListPage(driver);
 
 
-
         UserPage up = myPage.goToSearchFriends(0, "Vitaly Timakov");
+        start = up.checkGifts();
+        System.out.println("Имеем подарков " + start);
 
+
+        up.sendGift();
+
+
+        end = up.checkGifts();
+
+
+        System.out.println("На выходе" + end);
+
+        Assert.assertTrue("Количество друзей не изменилось!", start == (end + 1));
 
     }
-
-
 
 
 }
