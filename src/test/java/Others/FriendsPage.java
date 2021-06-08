@@ -26,7 +26,7 @@ public class FriendsPage {
 //        driver.wait(3000);
         WebElement element = driver.findElement(By.xpath(NAMES_SEARCH_LOCATOR));//Поиск строки ввода
 
-        element.click();//клик и ввод туда фамилии и иммени
+        //element.click();//клик и ввод туда фамилии и иммени
         element.sendKeys(name);
         driver.findElement(By.xpath(SEARCH_FRIEND_BUTTON)).click();
         //element.sendKeys(Keys.ENTER);

@@ -20,9 +20,10 @@ public class SendGiftTest extends BaseTest {
         LoginPage loginPage = new LoginPage(driver);
         MyPage myPage = loginPage.doLogin();
 
-        FriendsPage fp = myPage.goToSearchFriends();//Переход на страницу поиска друзей
-        UserPage up = fp.selectFriend(0,name);//Получение страницы, с номером относительно верхнего
-        up.sendGift(name);
+        UserPage fp = myPage.goToSearchFriends(0,name);//Переход на страницу поиска друзей
+
+       // UserPage up = fp.selectFriend(0,name);//Получение страницы, с номером относительно верхнего
+        //up.sendGift(name);
 
 
     }

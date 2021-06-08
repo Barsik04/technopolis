@@ -15,25 +15,39 @@ import java.util.concurrent.TimeUnit;
 public class TestFriendDelete extends BaseTest {
 
 
-
-
-
     public String name = "Vitaly Timakov";
-
 
 
     @Test
     public void testUntitledTestCase() throws Exception {
 
+        int start = -1;
+        int end = -1;
+
+
         LoginPage loginPage = new LoginPage(driver);
         MyPage myPage = loginPage.doLogin();
-        FriendsPage fp = myPage.goToSearchFriends();//Переход на страницу поиска друзей
-        UserPage up = fp.selectFriend(0,name);
-        up.checkDeleteFriend();
+
+        myPage.goToFriendList();
+        FriendListPage friendList = new FriendListPage(driver);
+        start = friendList.friendCount();
+        System.out.println("Имеем друзей " + start);
+
+        friendList.goToMyPage();
+
+        UserPage up = myPage.goToSearchFriends(0, "Vitaly Timakov");
+
+        up.deleteFromFriend();
+
+        up.goToMain();
+
+        myPage.goToFriendList();
+        end = friendList.friendCount();
+        System.out.println("На выходе" + end);
+
+        Assert.assertTrue("Количество друзей не изменилось!", start==(end+1));
 
     }
-
-
 
 
 }

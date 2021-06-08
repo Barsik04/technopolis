@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class WrapperHelper {
     private WebElement element;
@@ -31,6 +32,7 @@ public class WrapperHelper {
     }
 
     private boolean hasXpath(String xPath) {
+        driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         return driver.findElement(By.xpath(xPath)).isDisplayed();
     }
 

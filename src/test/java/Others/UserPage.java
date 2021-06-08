@@ -1,6 +1,7 @@
 package Others;
 
 import Tests.SendGiftTest;
+import org.jcp.xml.dsig.internal.SignerOutputStream;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -29,7 +30,7 @@ public class UserPage {
     static final String GIFTS_COUNTER = "//a[@class='gift_a']";
     static final String GO_TO_GIFTS = "//a[contains(@class, 'mctc_navMenuDDLIL') and contains(text(),'Подарки')]";
     private String DELETE = "//*[contains(text(), 'Удалить из друзей')]";
-
+    private String GO_TO_MY = "//div[@id='topPanelLeftCorner']";
     private String CHOOSE_FRIEND = "(.//a[@class='user-grid-card_img'])[1]";
 
     private String MAIN = "//div[@id='topPanelLeftCorner']";
@@ -39,12 +40,16 @@ public class UserPage {
     static final String ESE = "//span[@id='mctc_navMenuDropdownSec_otherSections']/span";
     private String CONFIRM = "//input[contains(@data-l, 'confirm')]";
 
+
+
+
     private int start = -1;
     private int end = -1;
 
+
     private String name;
 
-    UserPage(WebDriver driver) {
+    public UserPage(WebDriver driver) {
         this.driver = driver;
     }
 
@@ -115,46 +120,52 @@ public class UserPage {
         return n;
     }
 
-    public void checkDeleteFriend() {
-
-        start = checkFriendCount();
-        System.out.println("Имеем друзей " + start);
+    public void deleteFromFriend() {
 
 
-        WebElement chooseFriend = (new WebDriverWait(driver, 10))
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(CHOOSE_FRIEND)));
+        //WebElement chooseFriend = (new WebDriverWait(driver, 10))
+        //       .until(ExpectedConditions.presenceOfElementLocated(By.xpath(CHOOSE_FRIEND)));
 
-        chooseFriend.click();
+        //chooseFriend.click();
 
         WebElement triT = (new WebDriverWait(driver, 10))
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath(TRID)));
 
+
         triT.click();
+
+
+        WebElement del = (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(DELETE)));
+        del.click();
+        //System.out.println("кардочек ");
+
         driver.manage().timeouts().implicitlyWait(8000, TimeUnit.SECONDS);
-        ConfirmPage cf = conf();
+        ConfirmPage cf = new ConfirmPage(driver);
+        cf.confirm();
 
 
-        end = checkFriendCount();
-        System.out.println("Имеем по итогу " + end);
-        res();
+
     }
 
     public void res() {
         Assert.assertTrue("Все прошло успешно", end < start);
     }
 
+
+    public void goToMain() {
+        WebElement triT = (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(GO_TO_MY)));
+
+        triT.click();
+
+    }
+
+
     public ConfirmPage conf() {
 
         driver.findElement(By.xpath(DELETE)).click();
         return new ConfirmPage(driver);
-    }
-
-
-    public int checkFriendCount() {
-        driver.findElement(By.xpath(MAIN)).click();
-        driver.findElement(By.xpath(FRIEND)).click();
-        driver.manage().timeouts().implicitlyWait(800, TimeUnit.MILLISECONDS);
-        return driver.findElements(By.xpath(FRIEND_LIST)).size();
     }
 
 

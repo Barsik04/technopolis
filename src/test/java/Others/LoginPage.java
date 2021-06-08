@@ -8,8 +8,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class LoginPage {
     WebDriver driver;
-    static private final String username = "";
-    static private final String password = "!";
+    static private final String username = "89270054472";
+    static private final String password = "4815162342Nikita";
 
     static final String LOGIN_LOCATOR = ".//*[contains(@class, 'form')]/div/input[@type='text']";
     static final String PASSWORD_LOCATOR = ".//*[contains(@class, 'form')]/div/input[@type='password']";
@@ -25,27 +25,18 @@ public class LoginPage {
 
     }
 
-    public MyPage testLogin() {
+    public void testLogin(String log, String pass, Boolean cond) {
 
-        driver.findElement(By.xpath(LOGIN_LOCATOR)).sendKeys("451");
-        driver.findElement(By.xpath(SUBMIT_LOCATOR)).click();
         driver.findElement(By.xpath(LOGIN_LOCATOR)).clear();
-
-        Assert.assertTrue("Не выведена ошибка о пустом поле", existsElement(ERROR));
-
-        driver.findElement(By.xpath(PASSWORD_LOCATOR)).sendKeys("asd");
-        driver.findElement(By.xpath(SUBMIT_LOCATOR)).click();
         driver.findElement(By.xpath(PASSWORD_LOCATOR)).clear();
 
-        Assert.assertTrue("Не выведена ошибка о пустом поле", existsElement(ERROR));
-
-
-        driver.findElement(By.xpath(LOGIN_LOCATOR)).sendKeys(username);
-        driver.findElement(By.xpath(PASSWORD_LOCATOR)).sendKeys(password);
+        driver.findElement(By.xpath(LOGIN_LOCATOR)).sendKeys(log);
+        driver.findElement(By.xpath(PASSWORD_LOCATOR)).sendKeys(pass);
         driver.findElement(By.xpath(SUBMIT_LOCATOR)).click();
 
-        Assert.assertFalse("Не выведена ошибка о пустом поле", existsElement(ERROR));
-        return new MyPage(driver);
+        Assert.assertFalse("Не выведена ошибка о пустом поле", existsElement(ERROR) && cond);
+
+
 
     }
 

@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ConfirmPage {
     WebDriver driver;
-
+    String CLOSE = "//*[@value=\"Закрыть\"]";
     private String DELETE ="//input[contains(@data-l, 'confirm')]";
 
     public ConfirmPage(WebDriver driver){
@@ -22,5 +22,10 @@ public class ConfirmPage {
         WebElement delete = (new WebDriverWait(driver, 10))
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath(DELETE)));
         delete.click();
+
+        WebElement close = (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(CLOSE)));
+        close.click();
+
     }
 }
