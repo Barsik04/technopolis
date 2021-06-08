@@ -39,7 +39,7 @@ public class SendGiftTest extends BaseTest {
         end = up.checkGifts();
 
 
-        System.out.println("На выходе" + end);
+        System.out.println("На выходе подарков " + end);
 
         Assert.assertTrue("Количество друзей не изменилось!", start == (end + 1));
 

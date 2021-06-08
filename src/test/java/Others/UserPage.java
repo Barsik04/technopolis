@@ -92,24 +92,9 @@ public class UserPage {
         goToGifts.click();
 
 
-        driver.manage().timeouts().implicitlyWait(800, TimeUnit.MILLISECONDS);
-        WebElement send = (new WebDriverWait(driver, 10))
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(SGIFT)));
-        send.click();
-        driver.manage().timeouts().implicitlyWait(800, TimeUnit.MILLISECONDS);
 
-
-
-        WebElement sg = (new WebDriverWait(driver, 10))
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(SG)));
-        sg.click();
-
-
-
-        WebElement toBack = (new WebDriverWait(driver, 10))
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(GTV)));
-        toBack.click();
-
+        GiftPage gp = new GiftPage(driver);
+        gp.confirmGift();
 
 
         //driver.switchTo().frame(driver.findElement(By.xpath("//iframe[@class='modal-new_payment-frame']")));
