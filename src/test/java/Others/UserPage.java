@@ -79,18 +79,21 @@ public class UserPage {
 
     public void sendGift() {
 
-
-        driver.manage().timeouts().implicitlyWait(800, TimeUnit.MILLISECONDS);
         WebElement ese = (new WebDriverWait(driver, 10))
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath(ESE)));
+
         ese.click();
 
-
-
-        WebElement goToGifts = (new WebDriverWait(driver, 10))
+        driver.manage().timeouts().implicitlyWait(800, TimeUnit.MILLISECONDS);
+        WebElement goTo = (new WebDriverWait(driver, 10))
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath(GO_TO_GIFTS)));
-        goToGifts.click();
 
+        goTo.click();
+
+
+        // driver.findElement(By.xpath(ESE)).click();
+        // driver.findElement(By.xpath(GO_TO_GIFTS)).click();
+        driver.manage().timeouts().implicitlyWait(800, TimeUnit.MILLISECONDS);
 
 
         GiftPage gp = new GiftPage(driver);

@@ -3,6 +3,8 @@ package Others;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -32,8 +34,11 @@ public class WrapperHelper {
     }
 
     private boolean hasXpath(String xPath) {
-        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
-        return driver.findElement(By.xpath(xPath)).isDisplayed();
+
+        WebElement element = (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(xPath)));
+
+        return element.isEnabled();
     }
 
     public List<WrapperHelper> getElements() {
