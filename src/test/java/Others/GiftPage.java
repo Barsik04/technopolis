@@ -32,7 +32,7 @@ public class GiftPage {
 
         driver.manage().timeouts().implicitlyWait(800, TimeUnit.MILLISECONDS);
         WebElement send = (new WebDriverWait(driver, 10))
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(SGIFT)));
+                .until(ExpectedConditions.elementToBeClickable(By.xpath(SGIFT)));
         if (send.isEnabled()) {
             send.click();
         } else {
@@ -47,6 +47,9 @@ public class GiftPage {
         WebElement sg = (new WebDriverWait(driver, 10))
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath(SG)));
         sg.click();
+
+
+
 
         driver.switchTo().frame(driver.findElement(By.xpath(NEW_FRAME)));
 

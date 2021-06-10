@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 public class UserPage {
+
     WebDriver driver;
     //    локатор раздела фото на странице польователя
     static final String PHOTO_NAV = ".//a[contains(@class,'mctc_navMenuSec ') and contains(@href,'/photos')] ";
@@ -86,8 +87,10 @@ public class UserPage {
 
         driver.manage().timeouts().implicitlyWait(800, TimeUnit.MILLISECONDS);
         WebElement goTo = (new WebDriverWait(driver, 10))
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(GO_TO_GIFTS)));
+                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(GO_TO_GIFTS)));
 
+        ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(GO_TO_GIFTS));
+        driver.manage().timeouts().implicitlyWait(2000, TimeUnit.MILLISECONDS);
         goTo.click();
 
 

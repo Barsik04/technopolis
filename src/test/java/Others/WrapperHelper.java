@@ -36,9 +36,9 @@ public class WrapperHelper {
     private boolean hasXpath(String xPath) {
 
         WebElement element = (new WebDriverWait(driver, 10))
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(xPath)));
+                .until(ExpectedConditions.elementToBeClickable(By.xpath(xPath)));
 
-        return element.isEnabled();
+        return element.isDisplayed();
     }
 
     public List<WrapperHelper> getElements() {
