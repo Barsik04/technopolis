@@ -78,21 +78,24 @@ public class UserPage {
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
     }
 
-    public void sendGift() {
+    public void sendGift() throws InterruptedException {
 
+        driver.manage().timeouts().implicitlyWait(800, TimeUnit.MILLISECONDS);
         WebElement ese = (new WebDriverWait(driver, 10))
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath(ESE)));
-
+        driver.manage().timeouts().implicitlyWait(800, TimeUnit.MILLISECONDS);
+        Thread.sleep(3000);
         ese.click();
 
         driver.manage().timeouts().implicitlyWait(800, TimeUnit.MILLISECONDS);
         WebElement goTo = (new WebDriverWait(driver, 10))
                 .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(GO_TO_GIFTS)));
 
-        ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(GO_TO_GIFTS));
-        driver.manage().timeouts().implicitlyWait(2000, TimeUnit.MILLISECONDS);
-        goTo.click();
 
+        if (goTo.isEnabled()) {
+            driver.manage().timeouts().implicitlyWait(2000, TimeUnit.MILLISECONDS);
+            goTo.click();
+        }
 
         // driver.findElement(By.xpath(ESE)).click();
         // driver.findElement(By.xpath(GO_TO_GIFTS)).click();
