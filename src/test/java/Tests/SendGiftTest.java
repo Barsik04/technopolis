@@ -24,14 +24,15 @@ public class SendGiftTest extends BaseTest {
 
 
         UserPage up = myPage.goToSearchFriends(0, "Vitaly Timakov");
-        start = up.checkGifts();
+        GiftPage gp = new GiftPage(driver);
+        start = gp.checkGifts();
         System.out.println("Имеем подарков " + start);
 
 
         up.sendGift();
 
 
-        end = up.checkGifts();
+        end = gp.checkGifts();
 
 
         System.out.println("На выходе подарков " + end);

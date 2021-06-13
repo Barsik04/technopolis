@@ -18,7 +18,7 @@ public class UserPage {
     static final String USER_PHOTO_LOCATOR = ".//div[contains(@class,'ugrid_cnt')]/li[contains(@class,'ugrid_i')]//a[contains(@class,'photo-card_cnt')]";
 
 
-    static final String GIFTS_COUNTER = "//a[@class='gift_a']";
+
     static final String GO_TO_GIFTS = "//a[contains(@class, 'mctc_navMenuDDLIL') and contains(text(),'Подарки')]";
     private String DELETE = "//*[contains(text(), 'Удалить из друзей')]";
     private String GO_TO_MY = "//div[@id='topPanelLeftCorner']";
@@ -29,7 +29,7 @@ public class UserPage {
     static final String ESE = "//span[@id='mctc_navMenuDropdownSec_otherSections']/span";
 
 
-    String BACK = "//div[@class=\"compact-profile_img\"]";
+
 
     private String SGIFT = "//*[@class=\"gift-card __s __stub\"]";
 
@@ -64,17 +64,7 @@ public class UserPage {
     }
 
 
-    public int checkGifts() {
-        goToGiftList();
-        int n = driver.findElements(By.xpath(GIFTS_COUNTER)).size();
 
-
-        WebElement back = (new WebDriverWait(driver, 10))
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(BACK)));
-        back.click();
-
-        return n;
-    }
 
     public void deleteFromFriend() {
 

@@ -11,14 +11,15 @@ import java.util.concurrent.TimeUnit;
 
 public class GiftPage {
     WebDriver driver;
+    static final String GIFTS_COUNTER = "//a[@class='gift_a']";
     private String SGIFT = "//*[@class=\"gift-card __s __stub\"]";
     String SG = "(//*[@class=\"gift_a\"])[3]";
     String GTV = "//div/a[@class=\"o\"]";
     String SEND = "//button[contains(@class, \"send\")]";
     String NEW_FRAME = "//iframe[contains(@class,\"modal\")]";
+    String BACK = "//div[@class=\"compact-profile_img\"]";
 
-
-    GiftPage(WebDriver driver) {
+    public GiftPage(WebDriver driver) {
         this.driver = driver;
     }
 
@@ -61,5 +62,19 @@ public class GiftPage {
         WebElement toBack = (new WebDriverWait(driver, 10))
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath(GTV)));
         toBack.click();
+    }
+
+    public int checkGifts() {
+        UserPage up = new UserPage(driver);
+
+        up.goToGiftList();
+        int n = driver.findElements(By.xpath(GIFTS_COUNTER)).size();
+
+
+        WebElement back = (new WebDriverWait(driver, 10))
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath(BACK)));
+        back.click();
+
+        return n;
     }
 }
