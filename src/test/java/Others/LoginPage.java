@@ -4,12 +4,11 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class LoginPage {
     WebDriver driver;
-    static private final String username = "89270054472";
-    static private final String password = "4815162342Nikita";
+    static private final String username = "";
+    static private final String password = "";
 
     static final String LOGIN_LOCATOR = ".//*[contains(@class, 'form')]/div/input[@type='text']";
     static final String PASSWORD_LOCATOR = ".//*[contains(@class, 'form')]/div/input[@type='password']";
@@ -25,7 +24,7 @@ public class LoginPage {
 
     }
 
-    public void testLogin(String log, String pass, Boolean cond) {
+    public void loginTest(String log, String pass, Boolean cond) {
 
         driver.findElement(By.xpath(LOGIN_LOCATOR)).clear();
         driver.findElement(By.xpath(PASSWORD_LOCATOR)).clear();

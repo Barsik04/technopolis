@@ -1,15 +1,11 @@
 package Tests;
 
-//Главный класс.
-//Кейс состоит в том, чтобы найти конкретного польователя, зайти на его страницу,
-// найти конкретное по номеру фото и лайкнуть его, если оно не лайкнуто
+
 
 import Others.*;
 import org.junit.Assert;
 import org.junit.Test;
-import org.openqa.selenium.By;
 
-import java.util.concurrent.TimeUnit;
 
 
 public class TestFriendDelete extends BaseTest {
@@ -25,27 +21,27 @@ public class TestFriendDelete extends BaseTest {
         int end = -1;
 
 
-        LoginPage loginPage = new LoginPage(driver);
+        LoginPage loginPage = new LoginPage(driver);//Инициализация стартовой страницы
         MyPage myPage = loginPage.doLogin();
 
-        myPage.goToFriendList();
+        myPage.goToFriendList();//переход на страницу с друзьями и их подсчет
         FriendListPage friendList = new FriendListPage(driver);
         start = friendList.friendCount();
         System.out.println("Имеем друзей " + start);
 
-        friendList.goToMyPage();
+        friendList.goToMyPage();//Возврат к главной странице
 
-        UserPage up = myPage.goToSearchFriends(0, "Vitaly Timakov");
+        UserPage up = myPage.goToSearchFriends(0, name);//Поиск друга и переход на его страницу
 
-        up.deleteFromFriend();
+        up.deleteFromFriend(); //Удаление друга
 
-        up.goToMain();
+        up.goToMain();//Возврат на главную страницу
 
-        myPage.goToFriendList();
+        myPage.goToFriendList();//Подсчет друзей после действия
         end = friendList.friendCount();
         System.out.println("На выходе" + end);
 
-        Assert.assertTrue("Количество друзей не изменилось!", start==(end+1));
+        Assert.assertTrue("Количество друзей не изменилось!", start == (end + 1));//Вывод ошибки при неизменном количестве друзей
 
     }
 

@@ -1,9 +1,7 @@
 package Others;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
-import java.util.List;
 
 public class SearchFriendList {
 WebDriver driver;
@@ -15,16 +13,7 @@ WebDriver driver;
     }
 
 
-    public UserPage goToFriend (int n){
 
-        List<WrapperHelper> friendsList = new WrapperHelper(this.driver,USER_NAME_LOCATOR).getElements();//Поиск и оборачивание всех элементов для дальнейшей работы с ними
-
-
-        friendsList.get(n).click();
-        return new UserPage(driver);
-
-
-    }
 
 
 
